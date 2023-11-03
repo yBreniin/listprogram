@@ -1,0 +1,24 @@
+<div class="ed3">
+  <h4>Adicionando TODOs</h4>
+  <form class="example-form" #editForm="ngForm">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nome do TODO</mat-label>
+      <input matInput placeholder="" [(ngModel)]="novoTodo.nome" name="nome" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Descrição do TODO</mat-label>
+      <textarea cdkTextareaAutosize cdkAutosizeMaxRows="1" cdkAutosizeMinRows="1" matInput placeholder="" [(ngModel)]="novoTodo.descricao" name="descricao" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Completo</mat-label>
+      <mat-select [(ngModel)]="novoTodo.completo" name="completo" required>
+        <mat-option value="S">Sim</mat-option>
+        <mat-option value="N">Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <button mat-flat-button color="accent" (click)="adicionarTodo()" [disabled]="!editForm.valid">ADICIONAR</button>
+</div>

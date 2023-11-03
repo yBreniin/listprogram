@@ -1,0 +1,29 @@
+<div class="ed3">
+  <h4>Adicionando TODOs</h4>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Selecione a Tarefa</mat-label>
+      <mat-select formControlName="selectedTask" (selectionChange)="onTaskSelected($event.value)">
+        <mat-option *ngFor="let taskOption of taskOptions" [value]="taskOption">
+          {{ taskOption.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nome da Tarefa</mat-label>
+      <input formControlName="nome" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Descrição do TODO</mat-label>
+      <textarea formControlName="descricao" cdkTextareaAutosize cdkAutosizeMaxRows="1" cdkAutosizeMinRows="1" matInput placeholder=""></textarea>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="completo">Completar TODO</mat-checkbox>
+
+
+    <button mat-flat-button color="accent" [disabled]="!taskForm.valid" (click)="onConfirm()">CONFIRMAR</button>
+    <button mat-flat-button color="warn" [disabled]="!taskForm.valid" (click)="onDelete()">EXCLUIR</button>
+  </form>
+</div>
